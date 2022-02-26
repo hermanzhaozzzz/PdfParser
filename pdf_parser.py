@@ -102,7 +102,8 @@ if __name__ == "__main__":
     pdfpath = args.pdf
     # 这几个不要动
     textpath = r"./tmpout.txt"
-    rmdictpath = r"./rmdict.csv"
+    # rmdictpath = r"./rmdict.csv"
+    rmdictpath = r"https://raw.githubusercontent.com/hermanzhaozzzz/pdf_parser/master/rmdict.csv"
     outputpath = r"./outdict.csv"
 
     parse(pdfpath, textpath)
