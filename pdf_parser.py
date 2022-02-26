@@ -1,5 +1,8 @@
+#! /usr/local/Caskroom/miniconda/base/bin/python
+# pip install pdfminer3k pandas jieba
 import importlib
 import sys
+import argparse
 
 from pdfminer.cmapdb import main
 
@@ -13,18 +16,14 @@ from pdfminer.pdfinterp import (
 )
 from pdfminer.pdfparser import PDFDocument, PDFParser
 
-"""[解析pdf文本，保存在txt文件中]
-"""
-# 每次更改输入pdf的路径即可
-pdfpath = r"./1.pdf"
 
-# 这几个不要动
-textpath = r"./tmpout.txt"
-rmdictpath = r"./rmdict.csv"
-outputpath = r"./outdict.csv"
+def get_parser():
+    parser = argparse.ArgumentParser(description="pdf parser")
+    parser.add_argument('-i', '--pdf', type=str, required=True, help="input PDF file")
+    return parser
 
 
-def parse():
+def parse(pdfpath, textpath):
     fp = open(pdfpath, "rb")  # 以二进制读模式打开
     # 用文件对象来创建一个pdf文档分析器
     praser = PDFParser(fp)
@@ -65,7 +64,7 @@ def parse():
                         f.write(results + "\n")
 
 
-def solve():
+def solve(textpath, rmdictpath, outputpath):
     import jieba
     import pandas as pd
 
@@ -96,5 +95,15 @@ def solve():
 
 
 if __name__ == "__main__":
-    parse()
-    solve()
+    parser = get_parser()
+    args = parser.parse_args()
+
+    # 每次更改输入pdf的路径即可
+    pdfpath = args.pdf
+    # 这几个不要动
+    textpath = r"./tmpout.txt"
+    rmdictpath = r"./rmdict.csv"
+    outputpath = r"./outdict.csv"
+
+    parse(pdfpath, textpath)
+    solve(textpath, rmdictpath, outputpath)

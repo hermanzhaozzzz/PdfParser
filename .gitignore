@@ -1,0 +1,37 @@
+# jupyterlab meta
+*/.ipynb_checkpoints/
+
+# pycharm meta
+*/.idea/
+
+# Rstudio history
+*/.Rhistory
+
+# macos meta
+*/.DS_Store
+*/.Trash/
+
+# snakemake configure
+*/.snakemake/
+
+# HEXO public
+/public/
+/.deploy_git/
+
+# TexPad temp
+/.texpadtmp/
+
+# Polaris slurm system
+sna*.err
+sna*.out
+job.srp*
+slurm-*.out
+
+
+# Others
+/tmpdir_*/
+.localized
+
+
+
+
