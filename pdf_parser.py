@@ -91,7 +91,7 @@ def solve(textpath, rmdictpath, outputpath):
     for i in range(30):
         word, count = items[i]
         print("{: <20}{:->10}".format(word, count))
-    pd.DataFrame(items, columns=["letter", "frequency"]).to_csv(outputpath, index=None)
+    pd.DataFrame(items, columns=["letter", "frequency"]).head(20).to_csv(outputpath, index=None)
 
 
 if __name__ == "__main__":
